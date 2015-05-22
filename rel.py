@@ -136,7 +136,7 @@ def rel(inject, target, start, end):
             rel_dict[sym_addr] = (sym_off, target_plt_dict[rel_sym[1]], rel_sym[1], rel_sym[2])
         elif rel_sym[1].startswith('.rodata.'):
             print get_rodata_offset(inject, target)
-            rodata_off = int(rel_sym[3]) + int(get_rodata_offset(inject, target), 16)
+            rodata_off = int(rel_sym[3], 16) + int(get_rodata_offset(inject, target), 16)
             if rel_sym[2] == 'R_PPC_ADDR16_HA':
                 rel_dict[sym_addr] = (sym_off, hex((rodata_off >> 16) & 0xffff), rel_sym[1] + rel_sym[3], rel_sym[2])
             elif rel_sym[2] == 'R_PPC_ADDR16_LO':
